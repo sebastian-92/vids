@@ -13,22 +13,13 @@
             color: white;
         }
         .search-container {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-            top: 0;
-            width: 100%;
-        }
-        .search-bar {
-            width: 300px;
-            padding: 10px;
-            border: 2px solid #BB86FC;
-            border-radius: 25px;
-            outline: none;
-            font-size: 16px;
-            background-color: #1E1E1E;
-            color: white;
+  position: fixed;
+  inset: 0px;
+  width: 12rem;
+  height: 5rem;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: auto;
         }
         .search-button {
             right: 5px;
@@ -37,7 +28,7 @@
             background-color: #BB86FC;
             color: white;
             padding: 8px 12px;
-            border-radius: 20px;
+            border-radius: 15px;
             cursor: pointer;
             font-size: 16px;
         }
@@ -47,41 +38,9 @@
     </style>
 </head>
 <body>
-<script>
-var base = 'https://api.themoviedb.org/3/search/movie?';
-var key = 'ae4bd1b6fce2a5648671bfc171d15ba4';
-async function search() {
-    var query = encodeURIComponent(document.getElementById('search-input').value);
-    var url = base + 'query=' + query + '&api_key=' + key;
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        if (data.results.length > 0) {
-          document.getElementById('results').innerHTML='';
-            for (i in data.results) {
-    			result(data.results[i]);
-			}
-        } else {
-          document.getElementById('results').innerHTML='No results, sorry.';
-        }
-
-    } catch (error) {
-        document.getElementById('results').innerHTML='Error fetching data:' + error;
-    }
-}
-function result(json) {
-    document.getElementById('results').innerHTML += '<a href="player.html?id=' + json.id + '"><img src="https://image.tmdb.org/t/p/w500' + json.poster_path + '" width="20%" height="auto"></a>';
-}
-</script>
     <div class="search-container">
-        <input type="text" class="search-bar" id="search-input" placeholder="Search for movies...">
-        <button class="search-button" onclick='search()'>🔍</button>
+    	<h3>92vids</h3>
+        <button class="search-button" onclick="location.href='movies.html'">Movies</button>        <button class="search-button" onclick="location.href='series.html'">TV Shows</button>
     </div>
-    <div id="results"></div>
-
 </body>
 </html>
