@@ -26,12 +26,14 @@
       let params = new URLSearchParams(window.location.search);
       let name = params.get("id");
       if (name) {
+          var season = prompt('season?')
+          var episode = prompt('episode?')
           const embed = document.createElement("embed");
           embed.frameborder = "0";
-          embed.src = " https://vidsrc.to/embed/tv/" + name;
+          embed.src = "https://embed.su/embed/tv/" + name + '/' + season + '/' + episode;
           document.body.appendChild(embed);
       } else {
-          document.write("No movie ID .'-'.");
+          document.write("No series ID .'-'.");
       }
     </script>
   </body>
